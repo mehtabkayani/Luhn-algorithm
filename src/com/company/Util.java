@@ -13,8 +13,13 @@ public class Util {
         //Drop the last digit.
         card = card.substring(0, (card.length() - 1));
 
-        //Store it in an int array.
-        char[] cardArray = card.toCharArray();
+        //Reverse the digits.
+        String cardReverse = new StringBuilder(card).reverse().toString();
+
+        //Store the reversed card in char[]
+        char[] cardArray = cardReverse.toCharArray();
+
+        //Store the reversed char[] in an int array.
         int[] cardCopy = new int[cardArray.length];
         int sum = 0;
 
@@ -23,7 +28,6 @@ public class Util {
         }
 
         //multiply digit. (digit*2).
-
         for (int j = 0; j < cardCopy.length; j++) {
             if ((j % 2) == 0) {
                 cardCopy[j] = cardCopy[j] * 2;
@@ -45,14 +49,14 @@ public class Util {
 
         //check if sum * 9 divided by 10 has a remainder equal to the check number.
         if (sum * 9 % 10 == lastDigit) {
-            int expected = sum * 9 % 10;
+            int expected = sum * 9  % 10;
             System.out.println("Provided " + lastDigit);
             System.out.println("Expected " + expected);
             System.out.println();
             System.out.println();
             System.out.println("Checksum: Valid");
             System.out.print("Digits: " + cardDigitsLength);
-            if(isCreditCard(cardDigitsLength)){
+            if (isCreditCard(cardDigitsLength)) {
                 System.out.println(" (credit card)");
             }
 
@@ -71,13 +75,12 @@ public class Util {
         }
     }
 
-  public boolean isCreditCard(int digitsLength){
-        if(digitsLength == 16){
+    public boolean isCreditCard(int digitsLength) {
+        if (digitsLength == 16) {
             return true;
         }
         return false;
-  }
-
+    }
 
 
     public void start(String digits) {
